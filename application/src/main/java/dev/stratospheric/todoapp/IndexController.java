@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-  @GetMapping(path="/")
-  public String getIndex() {
-    return "index";
-  }
+    @GetMapping(path = "/")
+    public String getIndex() {
+        return "index";
+    }
 
 }
