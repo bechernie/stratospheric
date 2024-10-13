@@ -59,4 +59,9 @@ jobs:
         if: github.ref == 'refs/heads/main'
         working-directory: cdk
         run: |
-          npm run service:deploy -- -c environmentName=staging -c applicationName=todo-app -c dockerImageTag=${GITHUB_RUN_NUMBER}
+          npm run service:deploy --
+            -c environmentName=staging
+            -c applicationName=todo-app
+            -c springProfile=staging
+            -c dockerRepositoryName=todo-app
+            -c dockerImageTag=${GITHUB_RUN_NUMBER}

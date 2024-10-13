@@ -28,8 +28,11 @@ public class ServiceApp {
         final var springProfile = (String) app.getNode().tryGetContext("springProfile");
         Objects.requireNonNull(springProfile);
 
-        final var dockerImageUrl = (String) app.getNode().tryGetContext("dockerImageUrl");
-        Objects.requireNonNull(dockerImageUrl);
+        final var dockerRepositoryName = (String) app.getNode().tryGetContext("dockerRepositoryName");
+        Objects.requireNonNull(dockerRepositoryName);
+
+        final var dockerImageTag = (String) app.getNode().tryGetContext("dockerImageTag");
+        Objects.requireNonNull(dockerImageTag);
 
         final var region = (String) app.getNode().tryGetContext("region");
         Objects.requireNonNull(region);
