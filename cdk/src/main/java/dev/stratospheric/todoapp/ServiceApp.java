@@ -53,7 +53,7 @@ public class ServiceApp {
                         .build()
         );
 
-        final var dockerImageSource = new Service.DockerImageSource(dockerImageUrl);
+        final var dockerImageSource = new Service.DockerImageSource(dockerRepositoryName, dockerImageTag);
 
         final var networkOutputParameters = Network.getOutputParametersFromParameterStore(serviceStack, applicationEnvironment.getEnvironmentName());
 
