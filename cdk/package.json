@@ -4,6 +4,7 @@
   "description": "This is a blank project for CDK development with Java.",
   "main": "index.js",
   "scripts": {
+    "bootstrap": "cdk bootstrap --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.BootstrapApp\"",
     "repository:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.DockerRepositoryApp\"",
     "repository:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.DockerRepositoryApp\"",
     "network:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.NetworkApp\"",
