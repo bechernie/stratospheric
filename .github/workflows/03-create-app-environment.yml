@@ -1,4 +1,4 @@
-name: 02 - Manually create a shared environment
+name: 02 - Manually create a Todo-App environment
 
 on:
   workflow_dispatch:
@@ -32,6 +32,4 @@ jobs:
         working-directory: cdk
         run: npm install
 
-      - name: Deploy network stack
-        working-directory: cdk
-        run: npm run network:deploy -- -c environmentName=${{ github.event.inputs.environmentName }}
+      # TODO
