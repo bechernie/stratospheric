@@ -20,7 +20,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Build application
-        working-directory: application
+        working-directory: cdk
         run: ./gradlew build --stacktrace
 
       - name: Create Docker image tag
