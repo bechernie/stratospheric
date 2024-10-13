@@ -1,7 +1,7 @@
 name: 01 - Manually Bootstrap the CDK Environment
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

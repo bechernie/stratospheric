@@ -1,4 +1,4 @@
-name: 02 - Manually create a Todo-App environment
+name: 03 - Manually create a Todo-App environment
 
 on:
   workflow_dispatch:
