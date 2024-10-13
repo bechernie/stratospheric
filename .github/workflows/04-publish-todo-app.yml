@@ -9,9 +9,10 @@ on:
   workflow_dispatch:
 
 env:
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+  AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
 
 jobs:
   build-and-deploy:
@@ -48,11 +49,11 @@ jobs:
         working-directory: application
         run: |
           docker build -t todo-app .
-          docker tag todo-app our.ecr.amazonaws.com/todo-app:${DOCKER_IMAGE_TAG}
-          docker tag todo-app our.ecr.amazonaws.com/todo-app:latest
-          aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin our.ecr.amazonaws.com
-          docker push our.ecr.amazonaws.com/todo-app:${DOCKER_IMAGE_TAG}
-          docker push our.ecr.amazonaws.com/todo-app:latest
+          docker tag todo-app ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/todo-app:${DOCKER_IMAGE_TAG}
+          docker tag todo-app ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/todo-app:latest
+          aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+          docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/todo-app:${DOCKER_IMAGE_TAG}
+          docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/todo-app:latest
 
       - name: Deploy service stack
         if: github.ref == 'refs/heads/main'
