@@ -13,6 +13,9 @@
     ]
   },
   "context": {
+    "accountId":  "148761673443",
+    "region": "eu-west-3",
+    "applicationName": "todo-app",
     "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
     "@aws-cdk/core:checkSecretUsage": true,
     "@aws-cdk/core:target-partitions": [

@@ -1,0 +1,16 @@
+{
+  "name": "cdk",
+  "version": "1.0.0",
+  "description": "This is a blank project for CDK development with Java.",
+  "main": "index.js",
+  "scripts": {
+    "repository:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.DockerRepositoryApp\"",
+    "repository:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.DockerRepositoryApp\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-cdk": "^2.162.1"
+  }
+}
