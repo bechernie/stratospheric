@@ -1,7 +1,7 @@
 import {GetQueueAttributesCommand, SQSClient,} from "@aws-sdk/client-sqs";
 import axios from "axios";
 
-export const handler = async () => {
+export const handler = async (e) => {
     const queueUrl = process.env.QUEUE_URL;
     const region = process.env.REGION;
     const githubToken = process.env.GITHUB_TOKEN;
