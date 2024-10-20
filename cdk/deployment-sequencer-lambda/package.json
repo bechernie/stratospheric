@@ -2,6 +2,7 @@
   "name": "deployment-sequencer-lambda",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dist": "mkdir -p dist && cp src/index.js dist/index.js && npm run zip",
     "zip": "cp -r node_modules dist/node_modules && cd dist && zip -r lambda.zip index.js node_modules",
