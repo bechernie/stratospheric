@@ -55,8 +55,20 @@ jobs:
           docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/todo-app:${DOCKER_IMAGE_TAG}
           docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/todo-app:latest
 
-      - name: Deploy service stack
+      - name: Sending deployment event to queue
         if: github.ref == 'refs/heads/main'
-        working-directory: cdk
+        env:
+          DOCKER_IMAGE_TAG= ${{steps.dockerImageTag.outputs.tag}}
         run: |
-          npm run service:deploy -- -c environmentName=staging -c applicationName=todo-app -c springProfile=staging -c dockerRepositoryName=todo-app -c dockerImageTag=${DOCKER_IMAGE_TAG}
+          export EVENT_PAYLOAD="\
+            {\"commitSha\": \"$GITHUB_SHA\",\
+             \"ref\": \"main\", \
+             \"owner\": \"stratospheric-dev\", \
+             \"repo\": \"stratospheric\", \
+             \"workflowId\": \"05-update-todo-app-in-staging.yml\", \
+             \"dockerImageTag\": \"$DOCKER_IMAGE_TAG\"}"
+          aws sqs send-message \
+            --queue-url https://sqs.${AWS_REGION}.amazonaws.com/${AWS_ACCOUNT_ID}/todo-app-deploymentsQueue.fifo \
+            --message-group-id default \
+            --message-deduplication-id $GITHUB_SHA \
+            --message-body "$EVENT_PAYLOAD"

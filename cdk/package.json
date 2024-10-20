@@ -10,7 +10,9 @@
     "network:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.NetworkApp\" --require-approval never",
     "network:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.NetworkApp\" --force --require-approval never",
     "service:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.ServiceApp\" --require-approval never",
-    "service:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.ServiceApp\" --force --require-approval never"
+    "service:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.ServiceApp\" --force --require-approval never",
+    "deployment-sequencer:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.DeploymentSequencerApp\" --require-approval never",
+    "deployment-sequencer:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=dev.stratospheric.todoapp.DeploymentSequencerApp\" --force --require-approval never"
   },
   "keywords": [],
   "author": "",
