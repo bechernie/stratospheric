@@ -58,7 +58,7 @@ jobs:
       - name: Sending deployment event to queue
         if: github.ref == 'refs/heads/main'
         env:
-          DOCKER_IMAGE_TAG= ${{steps.dockerImageTag.outputs.tag}}
+          DOCKER_IMAGE_TAG: ${{steps.dockerImageTag.outputs.tag}}
         run: |
           export EVENT_PAYLOAD="\
             {\"commitSha\": \"$GITHUB_SHA\",\
