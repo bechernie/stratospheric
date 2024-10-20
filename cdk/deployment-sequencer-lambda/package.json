@@ -4,8 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dist": "mkdir -p dist && cp src/index.js dist/index.js && npm run zip",
-    "zip": "cp -r node_modules dist/node_modules && cd dist && zip -r lambda.zip index.js node_modules",
+    "dist": "mkdir -p dist && cp src/index.mjs dist/index.mjs && npm run zip",
+    "zip": "cp -r node_modules dist/node_modules && cd dist && zip -r lambda.zip index.mjs node_modules",
     "clean": "rm -rf dist"
   },
   "keywords": [],
