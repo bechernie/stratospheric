@@ -63,7 +63,7 @@ jobs:
           export EVENT_PAYLOAD="\
             {\"commitSha\": \"$GITHUB_SHA\",\
              \"ref\": \"main\", \
-             \"owner\": \"stratospheric-dev\", \
+             \"owner\": \"bechernie\", \
              \"repo\": \"stratospheric\", \
              \"workflowId\": \"05-update-todo-app-in-staging.yml\", \
              \"dockerImageTag\": \"$DOCKER_IMAGE_TAG\"}"
