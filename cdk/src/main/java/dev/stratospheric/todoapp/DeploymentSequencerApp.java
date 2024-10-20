@@ -85,7 +85,6 @@ public class DeploymentSequencerApp {
                                             .code(Code.fromAsset("./deployment-sequencer-lambda/dist/lambda.zip"))
                                             .runtime(Runtime.NODEJS_20_X)
                                             .handler("index.handler")
-                                            .reservedConcurrentExecutions(1)
                                             .events(Collections.singletonList(eventSource))
                                             .environment(Map.of(
                                                     "GITHUB_TOKEN", githubToken,
